@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"post-service","namespace":"default"},"spec":{"ports":[{"port":8080,"protocol":"TCP","targetPort":8080}],"selector":{"app":"post-service"}}}
+  creationTimestamp: "2024-10-21T09:14:35Z"
+  name: post-service
+  namespace: default
+  resourceVersion: "158418"
+  uid: 4ae7ca5d-274e-4296-951d-6498e4daac26
+spec:
+  clusterIP: 10.98.203.133
+  clusterIPs:
+  - 10.98.203.133
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: post-service
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

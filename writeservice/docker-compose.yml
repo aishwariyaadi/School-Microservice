@@ -1,0 +1,73 @@
+#
+#services:
+#  mongodb:
+#    image: mongo:latest
+#    container_name: mongodb
+#    ports:
+#      - "27017:27017"
+#    volumes:
+#      - mongo-data:/data/db
+#    environment:
+#      MONGO_INITDB_DATABASE: assignment1
+#
+#  assignment1-service:
+#    build:
+#      context: ./assignment1
+#      dockerfile: Dockerfile
+#    container_name: assignment1
+#    ports:
+#      - "8081:8080"
+#    depends_on:
+#      - mongodb
+#    environment:
+#      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/assignment1
+#
+#  read-service:
+#    build:
+#      context: ./readservice
+#      dockerfile: Dockerfile
+#    container_name: readservice
+#    ports:
+#      - "8082:8080"
+#    depends_on:
+#      - mongodb
+#    environment:
+#      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/assignment1
+#
+#  angular-frontend:
+#    build:
+#      context: ./my-app
+#      dockerfile: Dockerfile
+#    container_name: my-app
+#    ports:
+#      - "4200:80"   # Map Angular's port 80 (in container) to 4200 (in localhost)
+#
+#volumes:
+#  mongo-data:
+
+services:
+  angular-app:
+    build:
+      context: ../schoolapp  # Path to your Angular app
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"  # Map port 4200 to the container's port 80
+
+  post-service:
+    build:
+      context: ../writeservice  # Path to your Post service
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"  # Map port 8081 to the container's port 8080
+
+  readservice:
+    build:
+      context: ../readservice  # Path to your Read service
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8080"  # Map port 8082 to the container's port 8080
+
+  mongo:
+    image: mongodb:latest
+    ports:
+      - "27017:27017"  # Expose MongoDB on port 27017
