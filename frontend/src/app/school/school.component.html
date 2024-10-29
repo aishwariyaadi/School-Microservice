@@ -1,0 +1,55 @@
+<div>
+  <h2 align="center">School List</h2>
+  <table style="width:100%">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let sch of schools">
+      <td>{{ sch.name }}</td>
+      <td>{{ sch.location }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h3 align="center">Add New School</h3>
+  <form (ngSubmit)="addSchool()" align="center">
+    <label for="name">Name:</label>
+    <input id="name" [(ngModel)]="newSchool.name" name="name" required>
+    <br><br>
+    <label for="location">Location:</label>
+    <input id="location" [(ngModel)]="newSchool.location" name="location" required>
+    <br><br>
+    <button class="button button2" type="submit">Add School</button>
+  </form>
+
+  <style>
+    .button {
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .button2 {
+      background-color: #008CBA; /* Blue */
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+  </style>
+</div>
