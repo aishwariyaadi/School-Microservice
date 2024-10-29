@@ -1,0 +1,6 @@
+com/charu/readservice/SchoolRepository.class
+com/charu/readservice/SchoolService.class
+com/charu/readservice/SchoolController.class
+com/charu/readservice/ReadserviceApplication.class
+com/charu/readservice/config/WebConfig.class
+com/charu/readservice/School.class
